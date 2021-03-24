@@ -37,5 +37,7 @@ test("should renders non-empty congrates when `success` prop is true ", () => {
 
 test("doesn't throw an error when recieving unexpected props", () => {
   const expectedProps = { success: true };
+  // check if the Congrates component get the right props will not throw an error
+  // if some time at the future it thorws an error we must check for the props passed to congrates component all over the app
   checkProps(Congrates, expectedProps);
 });
