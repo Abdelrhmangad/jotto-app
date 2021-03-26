@@ -3,7 +3,7 @@
  * @param {string} guessedWord - the word guessed by the user
  * @param {string} secretWord - the secret word we defined
  */
-
+// !Magnificent Way to do the function
 export function getLetterMatchCount(guessedWord, secretWord) {
   const secretLetterSet = new Set(secretWord.split(""));
   const guessedWordSet = new Set(guessedWord.split(""));
