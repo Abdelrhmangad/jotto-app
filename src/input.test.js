@@ -5,7 +5,8 @@ import Input from "./input";
 
 const setup = (initialState = {}) => {
   const store = storeFacroty(initialState);
-  //* get to the input component by diving through
+  //* get to the input component by diving through the higher order component exported from input.js file {which is connect component}
+  // console.log(shallow(<Input store={store} />).debug());
   const wrapper = shallow(<Input store={store} />)
     .dive()
     .dive();
@@ -42,10 +43,13 @@ describe("render", () => {
       const component = findByTestAttr(wrapper, "component-input");
       expect(component.length).toBe(1);
     });
+    // to make sure that this component didnt reneder when props where changed {success: true}
     test("should render input box without any error", () => {
       const inputBox = findByTestAttr(wrapper, "input-box");
       expect(inputBox.length).toBe(0);
     });
+
+    // to make sure that this component didnt reneder when props where changed {success: true}
     test("should render submit Button without any error", () => {
       const submitButton = findByTestAttr(wrapper, "submit-button");
       expect(submitButton.length).toBe(0);
