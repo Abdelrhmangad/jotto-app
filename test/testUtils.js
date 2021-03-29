@@ -2,7 +2,7 @@
 import checkPropTypes from "check-prop-types";
 import { createStore, applyMiddleware } from "redux";
 import rootReducer from "../src/reducers/index";
-import { middleWares } from "../src/configureStore";
+import { middlewares } from "../src/configureStore";
 
 /**
  * Create with imported reducers. middlewares
@@ -12,11 +12,12 @@ import { middleWares } from "../src/configureStore";
  * @returns {Store}
  */
 
-export const storeFacroty = (initialState) => {
-  const createStorewWithMiddleware = applyMiddleware(...middleWares)(
-    createStore
+export const storeFactory = (initialState) => {
+  return createStore(
+    rootReducer,
+    initialState,
+    applyMiddleware(...middlewares)
   );
-  return createStorewWithMiddleware(rootReducer, initialState);
 };
 /**
  * Return node s with the given data-test attribute
@@ -25,7 +26,7 @@ export const storeFacroty = (initialState) => {
  * @returns {ShallowWrapper}
  */
 
-export const findByTestAttr = (wrapper, val) => {
+export default (wrapper, val) => {
   return wrapper.find(`[data-test="${val}"]`);
 };
 
