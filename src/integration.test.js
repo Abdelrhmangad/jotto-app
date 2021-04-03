@@ -56,6 +56,7 @@ describe("guessWord action dispatcher", () => {
     beforeEach(() => {
       store = storeFactory(initialState);
     });
+    //! below is a true integration test as it touches many parts of the code
     test("updates state correctly for unsuccessful guess", () => {
       store.dispatch(guessWord(unsuccessfulGuess));
       const newState = store.getState();
